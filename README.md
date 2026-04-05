@@ -1,94 +1,43 @@
 # CLIProxyAPI-CF
 
-Deploy CLIProxyAPI via Cloudflare Workers and Container.
+Deploy [CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI) via Cloudflare Workers and Container (serverless).
 
-Tech Stack: React + Vite + Hono + Cloudflare Workers
+## Get started
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template)
+Before you get going: this project **requires the Worker Paid Plan (5$/month)** as it uses Cloudflare Container and Durable Object for the backend service, both are paid features.
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, designed to run on Cloudflare Workers. It features hot module replacement, ESLint integration, and the flexibility of Workers deployments.
+First, put these environment variables in your Cloudflare secrets:
 
-![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public)
+```toml
+# Your Cloudflare Account ID
+R2_ACCOUNT_ID=xxx 
 
-<!-- dash-content-start -->
+# Your Cloudflare R2 Access Key ID
+AWS_ACCESS_KEY_ID=xxx
 
-🚀 Supercharge your web development with this powerful stack:
-
-- [**React**](https://react.dev/) - A modern UI library for building interactive interfaces
-- [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
-- [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
-- [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
-
-### ✨ Key Features
-
-- 🔥 Hot Module Replacement (HMR) for rapid development
-- 📦 TypeScript support out of the box
-- 🛠️ ESLint configuration included
-- ⚡ Zero-config deployment to Cloudflare's global network
-- 🎯 API routes with Hono's elegant routing
-- 🔄 Full-stack development setup
-- 🔎 Built-in Observability to monitor your Worker
-
-Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
-
-<!-- dash-content-end -->
-
-## Getting Started
-
-To start a new project with this template, run:
-
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/vite-react-template
+# Your Cloudflare R2 Access Key
+AWS_SECRET_ACCESS_KEY=xxx
 ```
 
-A live deployment of this template is available at:
-[https://react-vite-template.templates.workers.dev](https://react-vite-template.templates.workers.dev)
+Visit the cloudflare [official guide](https://developers.cloudflare.com/r2/api/tokens/) to get R2 access key and secret.
 
-## Development
+Second, copy `./container_src/config.example.yaml` to `./container_src/config.yaml` and follow instruction on [CLIProxyAPI docs](https://help.router-for.me/hands-on/tutorial-0.html) to fill out required fields.
 
-Install dependencies:
+These fields are mandatory:
 
-```bash
-npm install
-```
+- `secret-key`
+- `api-keys`
 
-Start the development server with:
+Third, run the command to deploy to Cloudflare:
 
 ```bash
-npm run dev
+bun install && bun deploy
 ```
 
-Your application will be available at [http://localhost:5173](http://localhost:5173).
+> Note: [bun](https://bun.com/) have to be installed on your machine, or you cloud use`npm`, `pnpm` instead.
 
-## Production
+The base url for endpoint is: `https://your-project-name.smycd.workers.dev/`. For more details, refer to [CLIProxyAPI docs](https://help.router-for.me/).
 
-Build your project for production:
+## Configuration
 
-```bash
-npm run build
-```
-
-Preview your build locally:
-
-```bash
-npm run preview
-```
-
-Deploy your project to Cloudflare Workers:
-
-```bash
-npm run build && npm run deploy
-```
-
-Monitor your workers:
-
-```bash
-npx wrangler tail
-```
-
-## Additional Resources
-
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/)
-- [Hono Documentation](https://hono.dev/)
+After installation, you'll need [EasyCLI](https://github.com/router-for-me/EasyCLI) to set up your providers.
