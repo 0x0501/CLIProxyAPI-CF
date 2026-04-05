@@ -1,0 +1,4 @@
+# Bun install mirror
+
+[install]
+registry = "https://registry.npmmirror.com/"
