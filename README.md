@@ -6,9 +6,9 @@ Deploy [CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI) via Cloudflar
 
 Before you get going: this project **requires the Worker Paid Plan (5$/month)** as it uses Cloudflare Container and Durable Object for the backend service, both are paid features.
 
-First, put these environment variables in your Cloudflare secrets:
+Step 1: put these environment variables in your Cloudflare secrets:
 
-```toml
+```env
 # Your Cloudflare Account ID
 R2_ACCOUNT_ID=xxx 
 
@@ -21,14 +21,14 @@ AWS_SECRET_ACCESS_KEY=xxx
 
 Visit the cloudflare [official guide](https://developers.cloudflare.com/r2/api/tokens/) to get R2 access key and secret.
 
-Second, copy `./container_src/config.example.yaml` to `./container_src/config.yaml` and follow instruction on [CLIProxyAPI docs](https://help.router-for.me/hands-on/tutorial-0.html) to fill out required fields.
+Step 2: copy `./container_src/config.example.yaml` to `./container_src/config.yaml` and follow instruction on [CLIProxyAPI docs](https://help.router-for.me/hands-on/tutorial-0.html) to fill out required fields.
 
 These fields are mandatory:
 
 - `secret-key`
 - `api-keys`
 
-Third, run the command to deploy to Cloudflare:
+Step 3: run the command to deploy to Cloudflare:
 
 ```bash
 bun install && bun deploy

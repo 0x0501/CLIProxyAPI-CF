@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Pull CLIProxyAPI Image from docker hub
-FROM eceasy/cli-proxy-api
+FROM eceasy/cli-proxy-api:latest
 
 # Install FUSE and dependencies
 RUN apk add --no-cache ca-certificates fuse curl bash
